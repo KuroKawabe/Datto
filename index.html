@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datto</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/png" href="image/Datto1.PNG" />
+    <meta name="description" content="Cửa hàng của Datto, nơi bán các sản phẩm độc quyền như Standee, Label Pin và nhiều hơn nữa." />
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <div id="loading" class="loading-spinner-container">
+    <div class="loading-spinner">
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+        <div><div></div></div>
+    </div>
+</div>
+
+
+    <a href="#mainContent" class="skip-link">Bỏ qua để vào nội dung chính</a>
+    
+
+    <aside class="sidebar">
+        <div class="logo-container">
+            <a href="https://kurokawari.github.io/nothinghere/">
+                <img src="image/Datas102-Caohoilong_no_bg (1).png" alt="Datas102 Logo" />
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Contact.html" id="contactLink">Liên hệ</a></li>
+                <li><a href="javascript:void(0)" id="authLink" onclick="openAuthPopup()">Đăng nhập/Đăng ký</a></li>
+            </ul>
+        </nav>
+        <div class="cart-button-container">
+            <button onclick="toggleCartPopup()" id="cartLink" class="cart-button" aria-label="Giỏ hàng" >
+                🛒 <span id="cartCount" class="cart-count">0</span>
+            </button>
+        </div>
+    </aside>
+
+    <div id="cartOverlay" class="cart-overlay hidden" onclick="closeCartPopup()"></div>
+    <div id="cartPopup" class="cart-popup hidden" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+        <h2 id="cartTitle">Giỏ hàng</h2>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-total">
+            <strong>Tổng cộng:</strong> <span id="cartTotal">0₫</span>
+        </div>
+        <div class="cart-button-container" style="position: static; display: flex; gap: 10px;">
+        <button class="btn-order" onclick="placeOrder()">Đặt hàng</button>
+        <button class="cart-remove" onclick="closeCartPopup()">Đóng</button>
+    </div>
+    </div>
+
+    <div class="popup-overlay hidden" id="authOverlay" onclick="closeAuthPopup()"></div>
+    <div class="popup auth-popup hidden" id="authPopup" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">Đăng nhập</button>
+            <button class="auth-tab" id="registerTab" onclick="switchTab('register')">Đăng ký</button>
+
+        </div>
+
+        <div class="auth-form" id="loginFormContainer">
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <input type="text" name="username" placeholder="Tên đăng nhập" required />
+                <input type="password" name="password" placeholder="Mật khẩu" required />
+                <button type="submit" class="auth-submit">Đăng nhập</button>
+            </form>
+        </div>
+
+        <div class="auth-form hidden" id="registerFormContainer">
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <input type="text" name="username" placeholder="Tên đăng nhập" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Mật khẩu" required /><br>
+                <button type="submit" class="auth-submit">Đăng ký</button>
+            </form>
+        </div>
+        <button onclick="closeAuthPopup()" class="auth-close" id="closeAuthBt=">Đóng</button>
+    </div>
+
+    <main class="loyalty-store" id="mainContent">
+        <h2>Datto's Store</h2>
+        <p>Đây là nơi bày bán các sản phẩm của Datto</p>
+
+        <div class="reward-list">
+            <div class="popup-overlay hidden" id="popupOverlay" onclick="closePopup()"></div>
+            <div class="popup hidden" id="productPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+                <h2 id="popupTitle"></h2>
+                <img id="popupImage" src="" alt="Sản phẩm" />
+                <p id="popupDescription"></p>
+                <button class="close-btn" id="closeProductBtn" onclick="closePopup()">Đóng</button>
+            </div>
+
+            <div class="reward-card" data-name="Standee Ban Mai" data-desc="Standee Ban Mai siêu cute đứng kế hoa anh đào." data-img="image/stbm.webp" data-price="150000">
+                <img onclick="image" src="image/stbm.webp" alt="Standee Ban Mai" />
+                <h3>Standee Ban Mai</h3>
+                <p>Standee</p>
+                <p>150.000 đ</p>
+                <div class="card-footer">
+                    <button class="order-btn" onclick="addToCart(this)">Thêm vào giỏ</button>
+                </div>
+            </div>
+
+            <div class="reward-card" data-name="Label Pin" data-desc="Ghim cài áo siêu xinh xẻo của Datto." data-img="image/SP1.jpg" data-price="20000">
+                <img src="image/SP1.jpg" alt="Label Pin" />
+                <h3>Label Pin</h3>
+                <p>Pin</p>
+                <p>20.000 đ</p>
+                <div class="card-footer">
+                    <button class="order-btn" onclick="addToCart(this)">Thêm vào giỏ</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
